@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Top-Down Game — uses assets/tileset & assets/character</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    html,body { height:100%; margin:0; background:#111; color:#ddd; font-family:system-ui,Segoe UI,Roboto,Arial; }
+    #game-container { width: 960px; margin: 16px auto; border: 6px solid #222; box-shadow: 0 8px 30px rgba(0,0,0,0.6); }
+    #instructions { text-align:center; margin-top:8px; color:#bbb; font-size:14px; }
+    .small { font-size:12px; color:#999; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/phaser@3.60.0/dist/phaser.min.js"></script>
+</head>
+<body>
+  <div id="game-container"></div>
+  <div id="instructions">
+    Arrow keys / WASD to move • Space to attack • Open browser console if any asset fails to load.
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>

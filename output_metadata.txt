@@ -1,0 +1,612 @@
+{
+    "1 Tiles": {
+        "Type": "Folder",
+        "Contents": {
+            "FieldsTileset.png": {
+                "Type": "File"
+            },
+            "FieldsTilesetTest.png": {
+                "Type": "File"
+            },
+            "FieldsTile_01.png": {
+                "Type": "File"
+            },
+            "FieldsTile_02.png": {
+                "Type": "File"
+            },
+            "FieldsTile_03.png": {
+                "Type": "File"
+            },
+            "FieldsTile_04.png": {
+                "Type": "File"
+            },
+            "FieldsTile_05.png": {
+                "Type": "File"
+            },
+            "FieldsTile_06.png": {
+                "Type": "File"
+            },
+            "FieldsTile_07.png": {
+                "Type": "File"
+            },
+            "FieldsTile_08.png": {
+                "Type": "File"
+            },
+            "FieldsTile_09.png": {
+                "Type": "File"
+            },
+            "FieldsTile_10.png": {
+                "Type": "File"
+            },
+            "FieldsTile_11.png": {
+                "Type": "File"
+            },
+            "FieldsTile_12.png": {
+                "Type": "File"
+            },
+            "FieldsTile_13.png": {
+                "Type": "File"
+            },
+            "FieldsTile_14.png": {
+                "Type": "File"
+            },
+            "FieldsTile_15.png": {
+                "Type": "File"
+            },
+            "FieldsTile_16.png": {
+                "Type": "File"
+            },
+            "FieldsTile_17.png": {
+                "Type": "File"
+            },
+            "FieldsTile_18.png": {
+                "Type": "File"
+            },
+            "FieldsTile_19.png": {
+                "Type": "File"
+            },
+            "FieldsTile_20.png": {
+                "Type": "File"
+            },
+            "FieldsTile_21.png": {
+                "Type": "File"
+            },
+            "FieldsTile_22.png": {
+                "Type": "File"
+            },
+            "FieldsTile_23.png": {
+                "Type": "File"
+            },
+            "FieldsTile_24.png": {
+                "Type": "File"
+            },
+            "FieldsTile_25.png": {
+                "Type": "File"
+            },
+            "FieldsTile_26.png": {
+                "Type": "File"
+            },
+            "FieldsTile_27.png": {
+                "Type": "File"
+            },
+            "FieldsTile_28.png": {
+                "Type": "File"
+            },
+            "FieldsTile_29.png": {
+                "Type": "File"
+            },
+            "FieldsTile_30.png": {
+                "Type": "File"
+            },
+            "FieldsTile_31.png": {
+                "Type": "File"
+            },
+            "FieldsTile_32.png": {
+                "Type": "File"
+            },
+            "FieldsTile_33.png": {
+                "Type": "File"
+            },
+            "FieldsTile_34.png": {
+                "Type": "File"
+            },
+            "FieldsTile_35.png": {
+                "Type": "File"
+            },
+            "FieldsTile_36.png": {
+                "Type": "File"
+            },
+            "FieldsTile_37.png": {
+                "Type": "File"
+            },
+            "FieldsTile_38.png": {
+                "Type": "File"
+            },
+            "FieldsTile_39.png": {
+                "Type": "File"
+            },
+            "FieldsTile_40.png": {
+                "Type": "File"
+            },
+            "FieldsTile_41.png": {
+                "Type": "File"
+            },
+            "FieldsTile_42.png": {
+                "Type": "File"
+            },
+            "FieldsTile_43.png": {
+                "Type": "File"
+            },
+            "FieldsTile_44.png": {
+                "Type": "File"
+            },
+            "FieldsTile_45.png": {
+                "Type": "File"
+            },
+            "FieldsTile_46.png": {
+                "Type": "File"
+            },
+            "FieldsTile_47.png": {
+                "Type": "File"
+            },
+            "FieldsTile_48.png": {
+                "Type": "File"
+            },
+            "FieldsTile_49.png": {
+                "Type": "File"
+            },
+            "FieldsTile_50.png": {
+                "Type": "File"
+            },
+            "FieldsTile_51.png": {
+                "Type": "File"
+            },
+            "FieldsTile_52.png": {
+                "Type": "File"
+            },
+            "FieldsTile_53.png": {
+                "Type": "File"
+            },
+            "FieldsTile_54.png": {
+                "Type": "File"
+            },
+            "FieldsTile_55.png": {
+                "Type": "File"
+            },
+            "FieldsTile_56.png": {
+                "Type": "File"
+            },
+            "FieldsTile_57.png": {
+                "Type": "File"
+            },
+            "FieldsTile_58.png": {
+                "Type": "File"
+            },
+            "FieldsTile_59.png": {
+                "Type": "File"
+            },
+            "FieldsTile_60.png": {
+                "Type": "File"
+            },
+            "FieldsTile_61.png": {
+                "Type": "File"
+            },
+            "FieldsTile_62.png": {
+                "Type": "File"
+            },
+            "FieldsTile_63.png": {
+                "Type": "File"
+            },
+            "FieldsTile_64.png": {
+                "Type": "File"
+            }
+        }
+    },
+    "1.1 Tiles": {
+        "Type": "Folder",
+        "Contents": {
+            "Tile2_01.png": {
+                "Type": "File"
+            },
+            "Tile2_02.png": {
+                "Type": "File"
+            },
+            "Tile2_03.png": {
+                "Type": "File"
+            },
+            "Tile2_04.png": {
+                "Type": "File"
+            },
+            "Tile2_05.png": {
+                "Type": "File"
+            },
+            "Tile2_06.png": {
+                "Type": "File"
+            },
+            "Tile2_07.png": {
+                "Type": "File"
+            },
+            "Tile2_08.png": {
+                "Type": "File"
+            },
+            "Tile2_09.png": {
+                "Type": "File"
+            },
+            "Tile2_10.png": {
+                "Type": "File"
+            },
+            "Tile2_11.png": {
+                "Type": "File"
+            },
+            "Tile2_12.png": {
+                "Type": "File"
+            },
+            "Tile2_13.png": {
+                "Type": "File"
+            },
+            "Tile2_14.png": {
+                "Type": "File"
+            },
+            "Tile2_15.png": {
+                "Type": "File"
+            },
+            "Tile2_16.png": {
+                "Type": "File"
+            },
+            "Tile2_17.png": {
+                "Type": "File"
+            },
+            "Tile2_18.png": {
+                "Type": "File"
+            },
+            "Tile2_19.png": {
+                "Type": "File"
+            },
+            "Tile2_20.png": {
+                "Type": "File"
+            },
+            "Tile2_21.png": {
+                "Type": "File"
+            },
+            "Tile2_22.png": {
+                "Type": "File"
+            },
+            "Tile2_23.png": {
+                "Type": "File"
+            },
+            "Tile2_24.png": {
+                "Type": "File"
+            },
+            "Tile2_25.png": {
+                "Type": "File"
+            },
+            "Tile2_26.png": {
+                "Type": "File"
+            },
+            "Tile2_27.png": {
+                "Type": "File"
+            },
+            "Tile2_28.png": {
+                "Type": "File"
+            },
+            "Tile2_29.png": {
+                "Type": "File"
+            },
+            "Tile2_30.png": {
+                "Type": "File"
+            },
+            "Tile2_31.png": {
+                "Type": "File"
+            },
+            "Tile2_32.png": {
+                "Type": "File"
+            },
+            "Tile2_33.png": {
+                "Type": "File"
+            },
+            "Tile2_34.png": {
+                "Type": "File"
+            },
+            "Tile2_35.png": {
+                "Type": "File"
+            },
+            "Tile2_36.png": {
+                "Type": "File"
+            },
+            "Tile2_37.png": {
+                "Type": "File"
+            },
+            "Tile2_38.png": {
+                "Type": "File"
+            },
+            "Tile2_39.png": {
+                "Type": "File"
+            },
+            "Tile2_40.png": {
+                "Type": "File"
+            },
+            "Tile2_41.png": {
+                "Type": "File"
+            },
+            "Tile2_42.png": {
+                "Type": "File"
+            },
+            "Tile2_43.png": {
+                "Type": "File"
+            },
+            "Tile2_44.png": {
+                "Type": "File"
+            },
+            "Tile2_45.png": {
+                "Type": "File"
+            },
+            "Tile2_46.png": {
+                "Type": "File"
+            },
+            "Tile2_47.png": {
+                "Type": "File"
+            },
+            "Tile2_48.png": {
+                "Type": "File"
+            },
+            "Tile2_49.png": {
+                "Type": "File"
+            },
+            "Tile2_50.png": {
+                "Type": "File"
+            },
+            "Tile2_51.png": {
+                "Type": "File"
+            },
+            "Tile2_52.png": {
+                "Type": "File"
+            },
+            "Tile2_53.png": {
+                "Type": "File"
+            },
+            "Tile2_54.png": {
+                "Type": "File"
+            },
+            "Tile2_55.png": {
+                "Type": "File"
+            },
+            "Tile2_56.png": {
+                "Type": "File"
+            },
+            "Tile2_57.png": {
+                "Type": "File"
+            },
+            "Tile2_58.png": {
+                "Type": "File"
+            },
+            "Tile2_59.png": {
+                "Type": "File"
+            },
+            "Tile2_60.png": {
+                "Type": "File"
+            },
+            "Tile2_61.png": {
+                "Type": "File"
+            },
+            "Tile2_62.png": {
+                "Type": "File"
+            },
+            "Tile2_63.png": {
+                "Type": "File"
+            },
+            "Tile2_64.png": {
+                "Type": "File"
+            },
+            "Tileset2.png": {
+                "Type": "File"
+            }
+        }
+    },
+    "2 Objects": {
+        "Type": "Folder",
+        "Contents": {
+            "1 Shadow": {
+                "Type": "Folder",
+                "Contents": {
+                    "1.png": {
+                        "Type": "File"
+                    },
+                    "2.png": {
+                        "Type": "File"
+                    },
+                    "3.png": {
+                        "Type": "File"
+                    },
+                    "4.png": {
+                        "Type": "File"
+                    },
+                    "5.png": {
+                        "Type": "File"
+                    },
+                    "6.png": {
+                        "Type": "File"
+                    }
+                }
+            },
+            "2 Stone": {
+                "Type": "Folder",
+                "Contents": {
+                    "1.png": {
+                        "Type": "File"
+                    },
+                    "2.png": {
+                        "Type": "File"
+                    },
+                    "3.png": {
+                        "Type": "File"
+                    },
+                    "4.png": {
+                        "Type": "File"
+                    },
+                    "5.png": {
+                        "Type": "File"
+                    },
+                    "6.png": {
+                        "Type": "File"
+                    }
+                }
+            },
+            "3 Decor": {
+                "Type": "Folder",
+                "Contents": {
+                    "1.png": {
+                        "Type": "File"
+                    },
+                    "10.png": {
+                        "Type": "File"
+                    },
+                    "11.png": {
+                        "Type": "File"
+                    },
+                    "12.png": {
+                        "Type": "File"
+                    },
+                    "13.png": {
+                        "Type": "File"
+                    },
+                    "14.png": {
+                        "Type": "File"
+                    },
+                    "15.png": {
+                        "Type": "File"
+                    },
+                    "16.png": {
+                        "Type": "File"
+                    },
+                    "17.png": {
+                        "Type": "File"
+                    },
+                    "2.png": {
+                        "Type": "File"
+                    },
+                    "3.png": {
+                        "Type": "File"
+                    },
+                    "4.png": {
+                        "Type": "File"
+                    },
+                    "5.png": {
+                        "Type": "File"
+                    },
+                    "6.png": {
+                        "Type": "File"
+                    },
+                    "7.png": {
+                        "Type": "File"
+                    },
+                    "8.png": {
+                        "Type": "File"
+                    },
+                    "9.png": {
+                        "Type": "File"
+                    }
+                }
+            },
+            "4 Box": {
+                "Type": "Folder",
+                "Contents": {
+                    "1.png": {
+                        "Type": "File"
+                    },
+                    "2.png": {
+                        "Type": "File"
+                    },
+                    "3.png": {
+                        "Type": "File"
+                    },
+                    "4.png": {
+                        "Type": "File"
+                    },
+                    "5.png": {
+                        "Type": "File"
+                    }
+                }
+            },
+            "5 Grass": {
+                "Type": "Folder",
+                "Contents": {
+                    "1.png": {
+                        "Type": "File"
+                    },
+                    "2.png": {
+                        "Type": "File"
+                    },
+                    "3.png": {
+                        "Type": "File"
+                    },
+                    "4.png": {
+                        "Type": "File"
+                    },
+                    "5.png": {
+                        "Type": "File"
+                    },
+                    "6.png": {
+                        "Type": "File"
+                    }
+                }
+            },
+            "6 Tent": {
+                "Type": "Folder",
+                "Contents": {
+                    "1.png": {
+                        "Type": "File"
+                    },
+                    "2.png": {
+                        "Type": "File"
+                    },
+                    "3.png": {
+                        "Type": "File"
+                    },
+                    "4.png": {
+                        "Type": "File"
+                    }
+                }
+            },
+            "7 House": {
+                "Type": "Folder",
+                "Contents": {
+                    "1.png": {
+                        "Type": "File"
+                    },
+                    "2.png": {
+                        "Type": "File"
+                    },
+                    "3.png": {
+                        "Type": "File"
+                    },
+                    "4.png": {
+                        "Type": "File"
+                    }
+                }
+            },
+            "PlaceForTower1.png": {
+                "Type": "File"
+            },
+            "PlaceForTower2.png": {
+                "Type": "File"
+            }
+        }
+    },
+    "3 Animated Objects": {
+        "Type": "Folder",
+        "Contents": {
+            "Door1.png": {
+                "Type": "File"
+            },
+            "Door2.png": {
+                "Type": "File"
+            },
+            "DoubleDoor1.png": {
+                "Type": "File"
+            },
+            "DoubleDoor2.png": {
+                "Type": "File"
+            }
+        }
+    }
+}

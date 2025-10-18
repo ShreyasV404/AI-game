@@ -14,7 +14,7 @@ class GameState:
         world_width = self.tilemap.width * Config.TILE_SIZE
         world_height = self.tilemap.height * Config.TILE_SIZE
         
-        # Find a safe starting position for the player (not inside a house)
+        # Find a safe starting position for the player (on a path)
         start_x, start_y = self.find_safe_start_position()
         
         # Create player at safe position
@@ -28,32 +28,26 @@ class GameState:
         print(f"Player starting at: {start_x}, {start_y}")
     
     def find_safe_start_position(self):
-        """Find a position that's not inside any house"""
-        # Try the center of the map first
+        """Find a position on a path (not colliding with objects)"""
+        # Look for a path tile to start on
+        for y, row in enumerate(self.tilemap.map_layout):
+            for x, char in enumerate(row):
+                if char == 'p':  # Path tile
+                    # Check if this position is collision-free
+                    test_x = x * Config.TILE_SIZE + Config.TILE_SIZE // 2
+                    test_y = y * Config.TILE_SIZE + Config.TILE_SIZE // 2
+                    
+                    # Create a temporary player rect to check collisions
+                    temp_rect = pygame.Rect(0, 0, 20, 30)
+                    temp_rect.center = (test_x, test_y)
+                    
+                    if not self.tilemap.check_collision(temp_rect):
+                        return test_x, test_y
+        
+        # If no path found, use center
         center_x = self.tilemap.width * Config.TILE_SIZE // 2
         center_y = self.tilemap.height * Config.TILE_SIZE // 2
-        
-        # Create a temporary player rect to check collisions
-        temp_rect = pygame.Rect(0, 0, 20, 30)
-        temp_rect.center = (center_x, center_y)
-        
-        # If center is blocked, try positions around it
-        if not self.tilemap.check_collision(temp_rect):
-            return center_x, center_y
-        
-        # Try positions in a spiral pattern from center
-        for radius in range(1, 10):
-            for angle in range(0, 360, 45):
-                # Calculate position in a circle around center
-                test_x = center_x + int(radius * Config.TILE_SIZE * pygame.math.Vector2(1, 0).rotate(angle).x)
-                test_y = center_y + int(radius * Config.TILE_SIZE * pygame.math.Vector2(1, 0).rotate(angle).y)
-                
-                temp_rect.center = (test_x, test_y)
-                if not self.tilemap.check_collision(temp_rect):
-                    return test_x, test_y
-        
-        # If all else fails, return a hardcoded safe position
-        return Config.TILE_SIZE * 10, Config.TILE_SIZE * 10
+        return center_x, center_y
     
     def handle_events(self, event):
         if event.type == pygame.KEYDOWN:

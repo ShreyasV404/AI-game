@@ -94,9 +94,7 @@ class Player(pygame.sprite.Sprite):
         if self.velocity.length() > 0:
             self.velocity = self.velocity.normalize()
             
-        # Debug: Print direction changes
-        if self.direction != old_direction and self.direction != "":
-            print(f"Direction: {self.key_debug}-> {self.direction}")
+        
             
         # State changes
         if keys[pygame.K_SPACE] and self.attack_cooldown <= 0:

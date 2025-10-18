@@ -46,5 +46,11 @@ class MenuState:
             surface.blit(text, (Config.SCREEN_WIDTH // 2 - text.get_width() // 2, 200 + i * 50))
         
         # Instructions
-        instructions = self.font_small.render("Use ↑↓ arrows to navigate, ENTER to select", True, (180, 180, 180))
-        surface.blit(instructions, (Config.SCREEN_WIDTH // 2 - instructions.get_width() // 2, 400))
+        instructions = [
+            "Use ↑↓ arrows to navigate, ENTER to select",
+            "In game: +/- to zoom, 0 to reset zoom"
+        ]
+        
+        for i, instruction in enumerate(instructions):
+            text = self.font_small.render(instruction, True, (180, 180, 180))
+            surface.blit(text, (Config.SCREEN_WIDTH // 2 - text.get_width() // 2, 400 + i * 30))

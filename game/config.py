@@ -8,8 +8,8 @@ class Config:
     PLAYER_SPEED = 250  # Increased from 180
     PLAYER_ANIMATION_SPEED = 0.1
     
-    # World - increased tile size for bigger appearance
-    TILE_SIZE = 32  # Increased from 32
+    # World - tile size matches your new tileset
+    TILE_SIZE = 32
     CHUNK_SIZE = 16
     
     # Colors

@@ -99,7 +99,7 @@ class TileMap:
                 
                 # Create collision rectangle for the house
                 # Make the collision area slightly smaller than the visual house for better gameplay
-                collision_margin = 15  # Pixels to shrink the collision box
+                collision_margin = 10  # Pixels to shrink the collision box
                 collision_rect = pygame.Rect(
                     pixel_x + collision_margin,
                     pixel_y + collision_margin,

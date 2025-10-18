@@ -60,6 +60,15 @@ class GameState:
             if event.key == pygame.K_ESCAPE:
                 # Return to menu
                 self.game.current_state = 'menu'
+            elif event.key == pygame.K_EQUALS or event.key == pygame.K_PLUS:
+                # Zoom in
+                self.camera.zoom_in()
+            elif event.key == pygame.K_MINUS:
+                # Zoom out
+                self.camera.zoom_out()
+            elif event.key == pygame.K_0:
+                # Reset zoom
+                self.camera.reset_zoom()
     
     def update(self, dt):
         self.player.update(dt)
@@ -69,13 +78,32 @@ class GameState:
         # Clear screen
         surface.fill((0, 0, 0))
         
-        # Draw world
-        self.tilemap.draw(surface, self.camera.offset)
+        # If zoom is normal (1.0), use standard rendering for better performance
+        if self.camera.zoom_level == 1.0:
+            self.tilemap.draw(surface, self.camera.offset)
+            self.player.draw(surface, self.camera.offset)
+        else:
+            # Create a surface to render the game world at 1:1 scale
+            world_surface = pygame.Surface((Config.SCREEN_WIDTH, Config.SCREEN_HEIGHT))
+            world_surface.fill((0, 0, 0))
+            
+            # Draw world and player at normal scale
+            self.tilemap.draw(world_surface, self.camera.offset)
+            self.player.draw(world_surface, self.camera.offset)
+            
+            # Scale the world surface to apply zoom
+            scaled_width = int(Config.SCREEN_WIDTH * self.camera.zoom_level)
+            scaled_height = int(Config.SCREEN_HEIGHT * self.camera.zoom_level)
+            scaled_surface = pygame.transform.scale(world_surface, (scaled_width, scaled_height))
+            
+            # Calculate position to center the scaled surface
+            x_offset = (Config.SCREEN_WIDTH - scaled_width) // 2
+            y_offset = (Config.SCREEN_HEIGHT - scaled_height) // 2
+            
+            # Draw the scaled surface centered on screen
+            surface.blit(scaled_surface, (x_offset, y_offset))
         
-        # Draw player
-        self.player.draw(surface, self.camera.offset)
-        
-        # Draw UI
+        # Draw UI (always on top, not affected by zoom)
         self.draw_ui(surface)
     
     def draw_ui(self, surface):
@@ -90,12 +118,19 @@ class GameState:
                                   True, (255, 255, 255))
         surface.blit(pos_text, (10, 40))
         
+        # Zoom info
+        zoom_text = self.font.render(f"Zoom: {self.camera.zoom_level:.1f}x", 
+                                   True, (255, 255, 255))
+        surface.blit(zoom_text, (10, 70))
+        
         # Controls help
         controls = [
             "WASD/Arrows: Move",
             "Shift: Run", 
             "Space: Attack",
             "Q: Toggle Weapon",
+            "+/-: Zoom In/Out",
+            "0: Reset Zoom",
             "ESC: Menu"
         ]
         

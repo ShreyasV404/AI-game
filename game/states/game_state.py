@@ -23,14 +23,21 @@ class GameState:
         # Create camera
         self.camera = Camera(self.player, world_width, world_height)
         
+        # Debug settings
+        self.show_collision_boxes = False  # Set to False to hide collision boxes
+        self.show_player_collision = True
+        
         print("Game world created!")
         print(f"World size: {world_width}x{world_height}")
         print(f"Player starting at: {start_x}, {start_y}")
     
     def find_safe_start_position(self):
         """Find a position on a path (not colliding with objects)"""
-        # Look for a path tile to start on
-        for y, row in enumerate(self.tilemap.map_layout):
+        # Try multiple positions to find a safe spot
+        safe_positions = []
+        
+        # First, look for path tiles in the ground layer
+        for y, row in enumerate(self.tilemap.layers[0]):
             for x, char in enumerate(row):
                 if char == 'p':  # Path tile
                     # Check if this position is collision-free
@@ -38,16 +45,101 @@ class GameState:
                     test_y = y * Config.TILE_SIZE + Config.TILE_SIZE // 2
                     
                     # Create a temporary player rect to check collisions
-                    temp_rect = pygame.Rect(0, 0, 20, 30)
+                    temp_rect = pygame.Rect(0, 0, 40, 50)  # Match player collision size
                     temp_rect.center = (test_x, test_y)
                     
                     if not self.tilemap.check_collision(temp_rect):
-                        return test_x, test_y
+                        safe_positions.append((test_x, test_y))
         
-        # If no path found, use center
+        # If we found safe path positions, return the first one
+        if safe_positions:
+            return safe_positions[0]
+        
+        # If no path found, look for any grass tile without collision
+        for y, row in enumerate(self.tilemap.layers[0]):
+            for x, char in enumerate(row):
+                if char == 'g':  # Grass tile
+                    test_x = x * Config.TILE_SIZE + Config.TILE_SIZE // 2
+                    test_y = y * Config.TILE_SIZE + Config.TILE_SIZE // 2
+                    
+                    temp_rect = pygame.Rect(0, 0, 40, 50)
+                    temp_rect.center = (test_x, test_y)
+                    
+                    if not self.tilemap.check_collision(temp_rect):
+                        safe_positions.append((test_x, test_y))
+        
+        # If we found safe grass positions, return the first one
+        if safe_positions:
+            return safe_positions[0]
+        
+        # If still no safe position found, try center of map
         center_x = self.tilemap.width * Config.TILE_SIZE // 2
         center_y = self.tilemap.height * Config.TILE_SIZE // 2
-        return center_x, center_y
+        
+        temp_rect = pygame.Rect(0, 0, 40, 50)
+        temp_rect.center = (center_x, center_y)
+        
+        if not self.tilemap.check_collision(temp_rect):
+            return center_x, center_y
+        
+        # Last resort: try multiple positions around the center
+        for offset_x in range(0, self.tilemap.width // 2, 2):
+            for offset_y in range(0, self.tilemap.height // 2, 2):
+                test_x = center_x + offset_x * Config.TILE_SIZE
+                test_y = center_y + offset_y * Config.TILE_SIZE
+                
+                # Make sure position is within map bounds
+                test_x = max(Config.TILE_SIZE, min(test_x, (self.tilemap.width - 1) * Config.TILE_SIZE))
+                test_y = max(Config.TILE_SIZE, min(test_y, (self.tilemap.height - 1) * Config.TILE_SIZE))
+                
+                temp_rect.center = (test_x, test_y)
+                
+                if not self.tilemap.check_collision(temp_rect):
+                    return test_x, test_y
+        
+        # Ultimate fallback: top-left corner (should be safe)
+        return Config.TILE_SIZE, Config.TILE_SIZE
+    
+    def draw_collision_debug(self, surface, offset):
+        """Draw collision boxes for debugging"""
+        if not self.show_collision_boxes:
+            return
+            
+        # Draw tilemap collision boxes
+        for collision_rect in self.tilemap.collision_rects:
+            # Adjust for camera offset
+            debug_rect = pygame.Rect(
+                collision_rect.x - offset.x,
+                collision_rect.y - offset.y,
+                collision_rect.width,
+                collision_rect.height
+            )
+            # Draw semi-transparent red box for collisions
+            s = pygame.Surface((debug_rect.width, debug_rect.height), pygame.SRCALPHA)
+            s.fill((255, 0, 0, 64))  # Red with transparency
+            surface.blit(s, debug_rect)
+            # Draw outline
+            pygame.draw.rect(surface, (255, 0, 0), debug_rect, 2)
+        
+        # Draw player collision box
+        if self.show_player_collision:
+            player_collision_rect = pygame.Rect(
+                self.player.collision_rect.x - offset.x,
+                self.player.collision_rect.y - offset.y,
+                self.player.collision_rect.width,
+                self.player.collision_rect.height
+            )
+            # Draw semi-transparent blue box for player collision
+            s = pygame.Surface((player_collision_rect.width, player_collision_rect.height), pygame.SRCALPHA)
+            s.fill((0, 0, 255, 64))  # Blue with transparency
+            surface.blit(s, player_collision_rect)
+            # Draw outline
+            pygame.draw.rect(surface, (0, 0, 255), player_collision_rect, 2)
+            
+            # Draw player center point
+            center_x = self.player.position.x - offset.x
+            center_y = self.player.position.y - offset.y
+            pygame.draw.circle(surface, (0, 255, 0), (int(center_x), int(center_y)), 3)
     
     def handle_events(self, event):
         if event.type == pygame.KEYDOWN:
@@ -63,6 +155,10 @@ class GameState:
             elif event.key == pygame.K_0:
                 # Reset zoom
                 self.camera.reset_zoom()
+            elif event.key == pygame.K_F1:
+                # Toggle collision debug
+                self.show_collision_boxes = not self.show_collision_boxes
+                print(f"Collision debug: {self.show_collision_boxes}")
     
     def update(self, dt):
         self.player.update(dt)
@@ -76,6 +172,8 @@ class GameState:
         if self.camera.zoom_level == 1.0:
             self.tilemap.draw(surface, self.camera.offset)
             self.player.draw(surface, self.camera.offset)
+            # Draw collision debug on top
+            self.draw_collision_debug(surface, self.camera.offset)
         else:
             # Create a surface to render the game world at 1:1 scale
             world_surface = pygame.Surface((Config.SCREEN_WIDTH, Config.SCREEN_HEIGHT))
@@ -84,6 +182,8 @@ class GameState:
             # Draw world and player at normal scale
             self.tilemap.draw(world_surface, self.camera.offset)
             self.player.draw(world_surface, self.camera.offset)
+            # Draw collision debug on the world surface
+            self.draw_collision_debug(world_surface, self.camera.offset)
             
             # Scale the world surface to apply zoom
             scaled_width = int(Config.SCREEN_WIDTH * self.camera.zoom_level)
@@ -117,6 +217,12 @@ class GameState:
                                    True, (255, 255, 255))
         surface.blit(zoom_text, (10, 70))
         
+        # Collision debug info
+        collision_status = "ON" if self.show_collision_boxes else "OFF"
+        collision_text = self.font.render(f"Collision Debug: {collision_status} (F1 to toggle)", 
+                                        True, (255, 255, 255))
+        surface.blit(collision_text, (10, 100))
+        
         # Controls help
         controls = [
             "WASD/Arrows: Move",
@@ -125,6 +231,7 @@ class GameState:
             "Q: Toggle Weapon",
             "+/-: Zoom In/Out",
             "0: Reset Zoom",
+            "F1: Toggle Collision Boxes",
             "ESC: Menu"
         ]
         

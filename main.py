@@ -44,6 +44,10 @@ class Game:
             # Render current state
             self.states[self.current_state].render(self.screen)
             pygame.display.flip()
+            
+            pygame.display.set_caption(f"Top-Down Village Adventure - FPS: {self.clock.get_fps():.2f}")
+            
+            pygame.display.update()
 
 if __name__ == "__main__":
     game = Game()

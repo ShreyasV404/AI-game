@@ -38,7 +38,7 @@ class Player(pygame.sprite.Sprite):
         self.rect = self.image.get_rect(center=self.position)
         
         # Create collision rectangle for 64x64 sprite
-        self.collision_rect = pygame.Rect(0, 0, 60, 75)  # Slightly smaller than sprite
+        self.collision_rect = pygame.Rect(0, 0, 20, 20)  # Slightly smaller than sprite
         self.collision_rect.center = self.position
         
         # Movement flags
@@ -72,6 +72,10 @@ class Player(pygame.sprite.Sprite):
         # Clear key debug
         self.key_debug = ""
         
+       # Reset velocity first
+        self.velocity.x = 0
+        self.velocity.y = 0
+
         # Set direction based on input - prioritize the last pressed direction
         if self.moving_up:
             self.velocity.y = -1
@@ -89,6 +93,20 @@ class Player(pygame.sprite.Sprite):
             self.velocity.x = 1
             self.direction = "side_right"
             self.key_debug += "RIGHT->side_right "
+
+        # For diagonal movement, set direction based on dominant axis
+        if self.velocity.x != 0 and self.velocity.y != 0:
+            # For diagonal movement, prioritize horizontal direction for animation
+            if abs(self.velocity.x) > abs(self.velocity.y):
+                if self.velocity.x > 0:
+                    self.direction = "side_right"
+                else:
+                    self.direction = "side_left"
+            else:
+                if self.velocity.y > 0:
+                    self.direction = "front"
+                else:
+                    self.direction = "back"
         
         # Normalize diagonal movement
         if self.velocity.length() > 0:

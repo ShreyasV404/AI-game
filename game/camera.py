@@ -7,7 +7,7 @@ class Camera:
         self.offset = pygame.Vector2(0, 0)
         self.world_width = world_width
         self.world_height = world_height
-        self.zoom_level = 1.5  # Default zoom (normal size)
+        self.zoom_level = 1.0  # Default zoom (normal size)
         self.min_zoom = 0.5    # Minimum zoom (50% of normal)
         self.max_zoom = 2.0    # Maximum zoom (200% of normal)
         
